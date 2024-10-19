@@ -248,10 +248,32 @@ try:
     FT_Get_Color_Glyph_Layer.restype   = FT_Bool
     FT_Get_Color_Glyph_Layer.argtypes  = [FT_Face, FT_UInt, POINTER(FT_UInt), POINTER(FT_UInt), POINTER(FT_LayerIterator)]
     FT_Get_Color_Glyph_Paint           = _lib.FT_Get_Color_Glyph_Paint # 2.13
-    FT_Get_Color_Glyph_Paint.restrype  = FT_Bool
+    FT_Get_Color_Glyph_Paint.restype   = FT_Bool
     FT_Get_Color_Glyph_Paint.argtypes  = [FT_Face, FT_UInt,
                                           FT_UInt, # FT_Color_Root_Transform enums
                                           POINTER(FT_OpaquePaint)]
+except AttributeError:
+    pass
+try:
+    FT_Face_GetCharVariantIndex          = _lib.FT_Face_GetCharVariantIndex
+    FT_Face_GetCharVariantIndex.argtypes = [FT_Face, FT_ULong, FT_ULong]
+    FT_Face_GetCharVariantIndex.restype  = FT_UInt
+
+    FT_Face_GetCharVariantIsDefault          = _lib.FT_Face_GetCharVariantIsDefault
+    FT_Face_GetCharVariantIsDefault.argtypes = [FT_Face, FT_ULong, FT_ULong]
+    FT_Face_GetCharVariantIsDefault.restype  = FT_Int
+
+    FT_Face_GetVariantSelectors          = _lib.FT_Face_GetVariantSelectors
+    FT_Face_GetVariantSelectors.argtypes = [FT_Face]
+    FT_Face_GetVariantSelectors.restype  = POINTER(FT_UInt32)
+
+    FT_Face_GetVariantsOfChar          = _lib.FT_Face_GetVariantsOfChar
+    FT_Face_GetVariantsOfChar.argtypes = [FT_Face, FT_ULong]
+    FT_Face_GetVariantsOfChar.restype  = POINTER(FT_UInt32)
+
+    FT_Face_GetCharsOfVariant          = _lib.FT_Face_GetCharsOfVariant
+    FT_Face_GetVariantsOfChar.argtypes = [FT_Face, FT_ULong]
+    FT_Face_GetCharsOfVariant.restype  = POINTER(FT_UInt32)
 except AttributeError:
     pass
 FT_Get_Module                  = _lib.FT_Get_Module

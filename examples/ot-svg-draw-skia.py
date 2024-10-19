@@ -6,6 +6,9 @@
 #  Copyright 2023 Hin-Tak Leung
 #  Distributed under the terms of the new BSD license.
 
+# This is an older example which works on skia m87 with known limitations.
+# See "ot-svg-example-skia.py" for a full example which requires m117.
+
 # Limitation:
 #     Skia-python bundles with Skia m87 (at time of writing this).
 #
@@ -75,9 +78,9 @@ if __name__ == '__main__':
             canvas.translate(WIDTH/4,0)
             h.render(canvas)
             
-            surface.flushAndSubmit()
-            image = surface.makeImageSnapshot()
-            image.save("ot-svg-draw-skia.png", skia.kPNG)
+        surface.flushAndSubmit()
+        image = surface.makeImageSnapshot()
+        image.save("ot-svg-draw-skia.png", skia.kPNG)
 
         from PIL import Image
         Image.open("ot-svg-draw-skia.png").show()
